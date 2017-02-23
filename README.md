@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/lakshaykalbhor/Thirsty/master/out.gif">
+
 # Thirsty
 > zsh/bash script to remind you to drink water.
 
