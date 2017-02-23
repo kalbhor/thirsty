@@ -9,7 +9,8 @@ drink_water() {
     date +%s > $DRINK_WATER_CONF
   fi
 
-  next_time=$(($(cat $DRINK_WATER_CONF) + $WATER_TIME))
+  # Tail is used to remain compatible with the pervious file format
+  next_time=$(($(tail -1 $DRINK_WATER_CONF) + $WATER_TIME))
 
   if [ $next_time -lt $(date +%s) ]; then
     echo -n "💧 You're thirsty"
