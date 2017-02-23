@@ -1,17 +1,19 @@
-thirsty=
-last_time=
+water_time=20 # Set time interval in seconds
 
 drink_water() {
-echo -n "$thirsty"
-water_time=10 # Set time interval 
+thirsty=`cat $HOME/.water` 
+last_time=`cat $HOME/.water_last_time`
 
   if [[ $thirsty == false ]]; then
-    last_time="$[$(date +%s) + $water_time]"
-    thirsty="true"
-    echo -n "${last_time} $(date +%s) ${thirsty}"
+    echo "$[$(date +%s) + $water_time]" > $HOME/.water_last_time
+    echo "true" > $HOME/.water
 
   elif [[ $[last_time] -lt $(date +%s) ]]; then
     echo -n "💧 You're thirsty"
   fi
+}
 
+not_thirsty() {
+echo "false" > $HOME/.water
+echo "0" > $HOME/.water_last_time
 }
