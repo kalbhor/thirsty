@@ -26,14 +26,3 @@ not_thirsty() {
   echo "0" >> $DRINK_WATER_CONF
 }
 
-# Username.
-# If user is root, then print it in red. Otherwise, just print in yellow.
-spaceship_user() {
-  if [ $USER = 'root' ]; then
-    echo -n "%{$fg_bold[red]%}"
-  else
-    echo -n "%{$fg_bold[yellow]%}"
-  fi
-  echo -n "%n"
-  echo -n "%{$reset_color%}"
-}
