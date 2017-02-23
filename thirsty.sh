@@ -1,27 +1,35 @@
-water_time=10800 # Set time interval in seconds
+#!/bin/sh
+
+WATER_TIME=${WATER_TIME:-10800} # Set time interval in seconds
+DRINK_WATER_CONF="$HOME/.water"
 
 drink_water() {
-thirsty=`cat $HOME/.water`
-last_time=`cat $HOME/.water_last_time`
+  # If the file doesn't exist, create it
+  if [ ! -f $DRINK_WATER_CONF ]; then
+    not_thirsty
+  fi
 
-  if [[ $thirsty == false ]]; then
-    echo "$[$(date +%s) + $water_time]" > $HOME/.water_last_time
-    echo "true" > $HOME/.water
-    echo -n " Water is essential "
+  thirsty=$(head -1 $DRINK_WATER_CONF)
+  last_time=$(tail -1 $DRINK_WATER_CONF)
 
-  elif [[ $[last_time] -lt $(date +%s) ]]; then
+  if [ $thirsty = 'false' ]; then
+    echo "true" > $DRINK_WATER_CONF
+    echo "$(($(date +%s) + $WATER_TIME))" >> $DRINK_WATER_CONF
+    echo -n "Water is essential "
+  elif [ $last_time -lt $(date +%s) ]; then
     echo -n "💧 You're thirsty"
   fi
 }
 
 not_thirsty() {
-echo "false" > $HOME/.water
-echo "0" > $HOME/.water_last_time
+  echo "false" > $DRINK_WATER_CONF
+  echo "0" >> $DRINK_WATER_CONF
 }
+
 # Username.
-# If user is root, then pain it in red. Otherwise, just print in yellow.
+# If user is root, then print it in red. Otherwise, just print in yellow.
 spaceship_user() {
-  if [[ $USER == 'root' ]]; then
+  if [ $USER = 'root' ]; then
     echo -n "%{$fg_bold[red]%}"
   else
     echo -n "%{$fg_bold[yellow]%}"
