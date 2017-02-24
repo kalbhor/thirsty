@@ -1,6 +1,6 @@
 #!/bin/sh
 
-WATER_TIME=${WATER_TIME:-10800} # Set time interval in seconds
+WATER_TIME=${WATER_TIME:-1200} # Set time interval in seconds
 DRINK_WATER_CONF="${DRINK_WATER_CONF:-$HOME/.water}"
 
 drink_water() {
