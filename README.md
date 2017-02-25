@@ -3,9 +3,9 @@
 # Thirsty
 > zsh/bash script to remind you to drink water.
 
-If you're like me and you spend a lot of your time programming with the command line open, chances are that you forget drinking water for a long period of time.
-**At the end of the day I would find out that I haven't had enough water.**
-Hence I created a bash script that reminds me to drink water on my command line.
+If you're like me and you spend a lot of time programming with the command line open, chances are that you forget about everything for hours, which includes drinking water.
+**At the end of the day I used to realise that I had not consumed enough water.**
+Hence I created a bash/zsh script to remind me to drink water right on my command line.
 
 ## How to use
 1. Copy the [thirsty.sh](thirsty.sh) file and paste it in your zshrc or bashrc or theme, etc.
