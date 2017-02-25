@@ -24,5 +24,5 @@ not_thirsty() {
 
 next_drink() {
   next_time=$(($(cat $DRINK_WATER_CONF) + $WATER_TIME))
-  echo "Next drink at $(date --date="@$next_time")"
+  echo "Next drink at $(date -r $next_time)"
 }
