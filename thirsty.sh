@@ -24,5 +24,16 @@ not_thirsty() {
 
 next_drink() {
   next_time=$(($(cat $DRINK_WATER_CONF) + $WATER_TIME))
-  echo "Next drink at $(date -r $next_time)"
+  next_date=""
+  # Mac's date command uses a different flag
+  case "$(uname)" in
+    'Darwin')
+      next_date="$(date -r $next_time)"
+      ;;
+    *)
+      next_date="$(date --date="@$next_time")"
+      ;;
+  esac
+
+  echo "Next drink at $next_date"
 }
