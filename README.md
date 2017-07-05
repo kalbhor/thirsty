@@ -14,5 +14,3 @@ Hence I created a bash/zsh script to remind me to drink water right on my comman
 4. Set your time interval in the variable `WATER_TIME` in seconds, eg : `WATER_TIME=1200` sets it to 20 mins.
 5. Once notified, you can remove the message by simply typing `not_thirsty` in your command line.
 
-## Contribute
-Since my knowledge on bash/zsh is limited, I'd be more than willing to accept improvements and additional features in this script.
